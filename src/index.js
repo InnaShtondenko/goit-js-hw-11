@@ -16,11 +16,15 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 let searchValue = '';
 let pageNumber = 1;
+
 refs.loadMoreBtn.hidden = true;
 
 function onSearch(e) {
+  document.querySelector(".gallery").innerHTML = '';
+ 
   e.preventDefault();
   refs.loadMoreBtn.hidden = false;
+
 
   galleryContainer();
   searchValue = e.currentTarget.elements.searchQuery.value;
@@ -33,10 +37,12 @@ function onSearch(e) {
   }
 
   pageNumber = 1;
-  ImagesApiService(searchValue, pageNumber).then(appendImagesMarkup);
+  ImagesApiService(searchValue, pageNumber)
+    .then(appendImagesMarkup);
 }
 
 function onLoadMore() {
+  
   pageNumber += 1;
   ImagesApiService(searchValue, pageNumber)
     .then(appendImagesMarkup)
