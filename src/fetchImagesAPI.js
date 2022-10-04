@@ -37,7 +37,7 @@ return await axios
           `Hooray! We found ${res.data.totalHits} images.`
         );
       }
-
+     
       return res.data;
     });
 }
