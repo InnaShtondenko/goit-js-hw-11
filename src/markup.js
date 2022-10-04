@@ -5,8 +5,13 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 
 const galleryContainer = document.querySelector('.gallery');
+const loadMoreBtn = document.querySelector('.load-more');
 
 export default function appendImagesMarkup(data) {
+
+  if (data.hits.length < 40) {
+    loadMoreBtn.hidden = true;
+  }
   const markup = data.hits
     .map(
       ({
